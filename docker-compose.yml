@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  podcast-demo:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - MINIMAX_API_KEY=${MINIMAX_API_KEY}
+      - GROUP_ID=${GROUP_ID}
+      - PORT=3000
+    volumes:
+      - ./uploads:/app/uploads
+      - ./outputs:/app/outputs
+      - ./assets:/app/assets
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - podcast-network
+
+networks:
+  podcast-network:
+    driver: bridge
