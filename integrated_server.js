@@ -37,6 +37,12 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/outputs", express.static(outputsDir));
+app.use(express.static(__dirname));
+
+// 设置默认首页为 demo.html
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "demo.html"));
+});
 
 // 健康检查端点
 app.get("/api/health", (req, res) => {
@@ -336,7 +342,8 @@ app.get("/api/generate-podcast/:taskId", (req, res) => {
   res.json(job);
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server listening on http://localhost:${PORT}`);
+  console.log(`Server also accessible at http://0.0.0.0:${PORT}`);
   console.log("整合服务器已启动，等待集成队友的服务...");
 });

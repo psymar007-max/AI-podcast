@@ -2,26 +2,21 @@
   "version": 2,
   "builds": [
     {
-      "src": "integrated_server.js",
+      "src": "simple_server.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/integrated_server.js"
+      "dest": "/simple_server.js"
     },
     {
       "src": "/(.*)",
-      "dest": "/$1"
+      "dest": "/demo.html"
     }
   ],
   "env": {
     "NODE_ENV": "production"
-  },
-  "functions": {
-    "integrated_server.js": {
-      "maxDuration": 60
-    }
   }
 }

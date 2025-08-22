@@ -1,4 +1,23 @@
 {
+  "name": "podcast-generator-demo",
+  "version": "1.0.0",
+  "description": "AI播客生成Demo - 基于用户文件和声音生成播客",
+  "main": "simple_server.js",
+  "scripts": {
+    "start": "node simple_server.js",
+    "dev": "node simple_server.js",
+    "build": "echo 'No build step required'",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "podcast",
+    "ai",
+    "voice-clone",
+    "text-to-speech",
+    "demo"
+  ],
+  "author": "VV Team",
+  "license": "MIT",
   "dependencies": {
     "@alicloud/credentials": "^2.4.4",
     "@alicloud/docmind-api20220711": "^1.4.9",
@@ -8,5 +27,8 @@
     "mammoth": "^1.10.0",
     "multer": "^2.0.2",
     "pdf-parse": "^1.1.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

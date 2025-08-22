@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VIVID VOICE · 让文字栩栩如“声”</title>
+    <style>
+      :root {
+        --bg: #ffffff;
+        --text: #0f172a;
+        --subtle: #475569;
+        --panel: #ffffff;
+        --border: #e5e7eb;
+        --shadow: 0 6px 24px rgba(15, 23, 42, 0.08);
+        --primary: #2563eb;
+        --primary-hover: #1d4ed8;
+      }
+      * { box-sizing: border-box; }
+      html, body { height: 100%; }
+      body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Helvetica, Arial, sans-serif; }
+      .container { max-width: 1024px; margin: 0 auto; padding: 28px 20px 60px; }
+      header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+      .logo { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 8px; border: 1px solid var(--border); background: #f8fafc; }
+      .logo svg { width: 22px; height: 22px; display: block; }
+      .brand { font-weight: 700; letter-spacing: .4px; }
+      .slogan { margin: 6px 0 20px; font-size: 28px; font-weight: 800; }
+      .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; box-shadow: var(--shadow); overflow: hidden; }
+      .panel + .panel { margin-top: 22px; }
+      .section-title { padding: 14px 16px; border-bottom: 1px solid var(--border); font-weight: 700; }
+      .input-wrap { padding: 12px 16px 0; }
+      .input-title { display: flex; align-items: center; gap: 8px; color: #2563eb; font-weight: 800; font-size: 18px; margin-bottom: 8px; }
+      .input-sub { color: var(--subtle); font-size: 13px; margin-bottom: 12px; }
+      .textbox { width: 100%; min-height: 140px; resize: vertical; outline: none; background: #fff; color: var(--text); border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; }
+      .toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px 10px; border-top: 1px solid var(--border); }
+      .left { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+      .btn { appearance: none; border: 1px solid var(--border); background: #fff; color: var(--text); padding: 9px 14px; border-radius: 999px; cursor: pointer; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: border-color .2s, box-shadow .2s, transform .06s; text-decoration: none; }
+      .btn:hover { border-color: #d1d5db; box-shadow: 0 2px 10px rgba(15,23,42,.06); }
+      .btn:active { transform: translateY(1px); }
+      .btn svg { width: 16px; height: 16px; }
+      .btn[aria-disabled="true"] { opacity: .5; pointer-events: none; }
+      .btn-primary { background: var(--primary); color: #fff; border-color: var(--primary); padding: 10px 18px; }
+      .btn-primary:hover { background: var(--primary-hover); border-color: var(--primary-hover); }
+      .uploader input[type="file"] { display: none; }
+      .attachments { padding: 0 16px 12px; display: flex; flex-wrap: wrap; gap: 8px; }
+      .chip { display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; border: 1px solid var(--border); background: #f8fafc; border-radius: 999px; color: var(--subtle); }
+      .chip b { color: var(--text); font-weight: 600; }
+      .chip .close { cursor: pointer; border: 0; background: transparent; color: var(--subtle); font-size: 14px; padding: 0 4px; }
+      .status { padding: 10px 16px 16px; color: var(--subtle); font-size: 13px; }
+      .progress { height: 6px; background: #f1f5f9; border: 1px solid var(--border); border-radius: 999px; overflow: hidden; margin-top: 8px; }
+      .bar { height: 100%; width: 0%; background: linear-gradient(90deg, #60a5fa, #34d399); transition: width .2s ease; }
+      .dropzone { display:none; margin: 12px 16px; border: 1px dashed #d1d5db; border-radius: 12px; padding: 12px; color: var(--subtle); }
+      .dropzone.show { display:block; }
+      .result-wrap { padding: 14px 16px 18px; display: flex; gap: 12px; align-items: center; }
+      .result-col { flex: 1 1 auto; min-width: 0; }
+      .note { color: var(--subtle); font-size: 12px; margin-top: 6px; }
+      .btn-download { height: 44px; padding: 0 16px; align-items: center; }
+      @media (max-width: 720px) { .slogan { font-size: 22px; } .toolbar { flex-direction: column; align-items: stretch; } .left { justify-content: space-between; } .attachments { padding-left: 16px; padding-right: 16px; } .result-wrap { flex-direction: column; align-items: stretch; } .btn-download { height: 40px; } }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="logo" aria-label="logo">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6l4 12 4-12" stroke="#2563eb" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 6l4 12 4-12" stroke="#60a5fa" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="brand">VIVID VOICE</div>
+      </header>
+
+      <h1 class="slogan">让文字栩栩如“声”</h1>
+
+      <section class="panel" id="panel">
+        <div class="section-title">输入与上传</div>
+        <div class="input-wrap">
+          <div class="input-title">AI 播客</div>
+          <div class="input-sub">输入文本/上传文件/添加网页链接来生成播客，也可提供参考音频让AI复刻该音色</div>
+          <textarea id="text" class="textbox" placeholder="在这里输入你的文本…"></textarea>
+        </div>
+        <div id="dropzone" class="dropzone">将文本文件或参考音频拖拽到此处</div>
+        <div class="toolbar">
+          <div class="left">
+            <div class="uploader"><label class="btn" for="textFile">📄 上传文件</label><input id="textFile" type="file" accept=".txt,.md,.srt,.vtt,.pdf,.doc,.docx,.rtf" /></div>
+            <button class="btn" id="urlBtn" type="button">🔗 网页链接</button>
+            <div class="uploader"><label class="btn" for="voiceFile">🎵 上传参考音频</label><input id="voiceFile" type="file" accept="audio/*" /></div>
+            <input id="urlInput" type="url" placeholder="粘贴网页链接" style="display:none; padding:9px 12px; border:1px solid var(--border); border-radius:999px; min-width:220px;" />
+          </div>
+          <div style="display:flex; gap:10px; align-items:center;"><button id="generateBtn" class="btn btn-primary">生成音频</button></div>
+        </div>
+        <div id="attachments" class="attachments"></div>
+        <div class="status" id="status"><div>状态：<b id="statusText">待生成</b></div><div class="progress"><div class="bar" id="bar"></div></div></div>
+      </section>
+
+      <section class="panel" id="resultPanel">
+        <div class="section-title">生成结果</div>
+        <div class="result-wrap">
+          <div class="result-col"><audio id="player" controls preload="auto" style="width: 100%; display:block; height:44px;"></audio><div class="note">提示：支持在线播放与下载保存。</div></div>
+          <div><a id="downloadBtn" class="btn btn-download" href="#" aria-disabled="true" download>下载音频</a></div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      // 自动选择 API 基址：同源可用相对路径；file:// 或不同源时回退到 localhost:3000
+      let API_BASE = "/api";
+      try { if (location.origin === "null" || location.protocol === "file:") { API_BASE = "http://localhost:3000/api"; } } catch { API_BASE = "http://localhost:3000/api"; }
+
+      const els = { panel: document.getElementById("panel"), text: document.getElementById("text"), textFile: document.getElementById("textFile"), voiceFile: document.getElementById("voiceFile"), urlBtn: document.getElementById("urlBtn"), urlInput: document.getElementById("urlInput"), generateBtn: document.getElementById("generateBtn"), statusText: document.getElementById("statusText"), bar: document.getElementById("bar"), player: document.getElementById("player"), dropzone: document.getElementById("dropzone"), downloadBtn: document.getElementById("downloadBtn"), attachments: document.getElementById("attachments") };
+
+      function apiOrigin(){ try{ return new URL(API_BASE, location.href).origin; } catch { return "http://localhost:3000"; } }
+      function resolveUrl(u){ if(!u) return u; if(/^https?:/i.test(u)) return u; const origin=apiOrigin(); if(u.startsWith("/")) return origin + u; return origin + "/" + u; }
+      function setStatus(text, progress){ els.statusText.textContent=text; if(typeof progress==="number"){ els.bar.style.width=Math.min(100,Math.max(0,progress))+"%"; } }
+      function enableDownload(url){ const abs=resolveUrl(url); if(!abs){ els.downloadBtn.setAttribute("aria-disabled","true"); els.downloadBtn.href="#"; return; } els.downloadBtn.setAttribute("aria-disabled","false"); els.downloadBtn.href=abs; els.downloadBtn.setAttribute("download", `podcast_${Date.now()}.mp3`); }
+      function humanSize(bytes){ if(!bytes && bytes!==0) return ""; const units=["B","KB","MB","GB"]; let i=0, v=bytes; while(v>=1024 && i<units.length-1){ v/=1024; i++; } return `${v.toFixed(v<10?1:0)}${units[i]}`; }
+
+      function renderAttachments(){
+        const chips = [];
+        const tf = els.textFile.files && els.textFile.files[0];
+        if (tf) chips.push(`<span class="chip" data-type="text"><b>文件</b> ${tf.name} (${humanSize(tf.size)}) <button class="close" title="移除">×</button></span>`);
+        const vf = els.voiceFile.files && els.voiceFile.files[0];
+        if (vf) chips.push(`<span class="chip" data-type="audio"><b>音频</b> ${vf.name} (${humanSize(vf.size)}) <button class="close" title="移除">×</button></span>`);
+        const url = (els.urlInput.value || "").trim();
+        if (url) chips.push(`<span class="chip" data-type="url"><b>链接</b> ${url} <button class="close" title="移除">×</button></span>`);
+        els.attachments.innerHTML = chips.join("");
+      }
+
+      els.attachments.addEventListener("click", (e)=>{
+        const btn = e.target.closest(".close");
+        if (!btn) return;
+        const wrap = btn.closest(".chip");
+        const type = wrap?.getAttribute("data-type");
+        if (type === "text") els.textFile.value = "";
+        if (type === "audio") els.voiceFile.value = "";
+        if (type === "url") els.urlInput.value = "";
+        renderAttachments();
+      });
+
+      function readTextFile(file){ return new Promise((res,rej)=>{ const r=new FileReader(); r.onerror=()=>rej(new Error("文件读取失败")); r.onload=()=>res(String(r.result||"")); r.readAsText(file,"utf-8"); }); }
+      function setupDnD(){ [document,els.panel].forEach(n=>{ n.addEventListener("dragover",e=>{e.preventDefault(); els.dropzone.classList.add("show");}); n.addEventListener("dragleave",e=>{e.preventDefault(); els.dropzone.classList.remove("show");}); n.addEventListener("drop",async e=>{ e.preventDefault(); els.dropzone.classList.remove("show"); const files=Array.from(e.dataTransfer.files||[]); for(const f of files){ if(f.type.startsWith("audio/")){ const dt=new DataTransfer(); dt.items.add(f); els.voiceFile.files=dt.files; } else { try{ const content=await readTextFile(f); els.text.value=(els.text.value+"\n\n"+content).trim(); }catch{} const dt=new DataTransfer(); dt.items.add(f); els.textFile.files=dt.files; } } renderAttachments(); }); }); }
+
+      els.urlBtn.addEventListener("click",()=>{ const show=els.urlInput.style.display==="none"; els.urlInput.style.display=show?"inline-block":"none"; if(show) els.urlInput.focus(); });
+      els.textFile.addEventListener("change", renderAttachments);
+      els.voiceFile.addEventListener("change", renderAttachments);
+      els.urlInput.addEventListener("input", renderAttachments);
+
+      async function createJob(fd){ const res=await fetch(`${API_BASE}/generate-podcast`,{method:"POST",body:fd}); if(!res.ok) throw new Error(`创建任务失败: ${res.status}`); return res.json(); }
+      async function pollJob(id,onUpdate){ while(true){ const res=await fetch(`${API_BASE}/generate-podcast/${encodeURIComponent(id)}`); if(!res.ok) throw new Error(`查询任务失败: ${res.status}`); const data=await res.json(); onUpdate&&onUpdate(data); if((data.status||"").toLowerCase().includes("error")){ throw new Error(data.error||"后台任务失败"); } if((data.status||"").toLowerCase().includes("success") && data.audio_url) return data; await new Promise(r=>setTimeout(r,2000)); } }
+
+      async function handleGenerate(){ try{ setStatus("创建任务中…",10); enableDownload(""); els.player.removeAttribute("src"); els.player.load(); els.generateBtn.disabled=true; const fd=new FormData(); const text=(els.text.value||"").trim(); const url=(els.urlInput.value||"").trim(); if(text) fd.append("text",text); if(url) fd.append("url",url); if(els.textFile.files[0]) fd.append("text_file",els.textFile.files[0]); if(els.voiceFile.files[0]) fd.append("reference_audio",els.voiceFile.files[0]); const {task_id}=await createJob(fd); setStatus("处理中…",25); const result=await pollJob(task_id,(info)=>{ const p=Math.round((info.progress||0)*100); setStatus(info.error?`出错：${info.error}`:`处理中… ${p}%`,Math.max(25,p)); }); setStatus("生成完成",100); const abs=resolveUrl(result.audio_url); els.player.src=abs; enableDownload(abs); els.player.play().catch(()=>{}); } catch(err){ console.error(err); setStatus(`出错：${err.message||err}`,0); } finally { els.generateBtn.disabled=false; } }
+
+      els.generateBtn.addEventListener("click", handleGenerate); setupDnD(); enableDownload(""); renderAttachments();
+    </script>
+  </body>
+</html>
