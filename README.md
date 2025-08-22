@@ -54,7 +54,7 @@
 ├── README.md                    # 项目说明文档
 ├── package.json                 # Node.js 依赖配置
 ├── demo.html                    # 前端界面文件
-├── integrated_server.js         # 主服务器文件
+├── simple_server.js             # 主服务器文件
 ├── extractPDFText.js           # PDF 解析服务
 ├── text_to_draft_doubao.js     # AI 脚本生成服务
 ├── 播客demo核心文件/            # 核心功能模块
@@ -101,7 +101,8 @@
 
 1. **克隆项目**
    ```bash
-   cd 播客生成Demo完整版
+   git clone https://github.com/psymar007-max/AI-podcast.git
+   cd AI-podcast
    ```
 
 2. **安装依赖**
@@ -122,7 +123,7 @@
 
 5. **启动服务器**
    ```bash
-   node integrated_server.js
+   npm start
    ```
 
 6. **打开前端界面**
@@ -223,7 +224,7 @@ GROUP_ID="1956929272627073130"
 ### 日志查看
 ```bash
 # 查看服务器日志
-node integrated_server.js
+npm start
 
 # 常见日志信息
 [JOB xxx] 开始解析文件
@@ -267,7 +268,7 @@ node integrated_server.js
 ## 📞 联系方式
 
 如有问题或建议，请通过以下方式联系：
-- **项目地址**：播客生成Demo完整版
+- **项目地址**：[https://github.com/psymar007-max/AI-podcast](https://github.com/psymar007-max/AI-podcast)
 - **技术支持**：查看 README 和日志文件
 - **功能建议**：提交 Issue 或 Pull Request
 
